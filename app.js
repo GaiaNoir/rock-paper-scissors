@@ -1,7 +1,9 @@
+const options = ["rock", "paper", "scissors"];
+
+
 function getComputerChoice(){
-    const choice = ["Rock", "Paper", "Scissors"];
-    const random = Math.floor(Math.random() * choice.length);
-    return choice[random];
+    const choice = options[Math.floor(Math.random() * options.length)];
+    return choice;
 }
 
 function checkWinner(playerSelection, computerSelection){
@@ -17,7 +19,7 @@ function checkWinner(playerSelection, computerSelection){
         return "Computer";
     }
 }
- function gameRound() {
+ function gameRound(playerSelection, computerSelection) {
     const results = checkWinner(playerSelection, computerSelection);
     if(results == "Tie"){
         return "It's a tie"
@@ -28,6 +30,39 @@ function checkWinner(playerSelection, computerSelection){
     }
 }
 
-const playerSelection = prompt("Rock, Paper, Scissors? ").toLowerCase();
-const computerSelection = getComputerChoice().toLowerCase();
+function getPlayerChoice(){
+    let validatedInput = false;
+    while (validatedInput==false){
+        const choice = prompt("Rock, Paper, Scissors");
+        if(choice == null){
+            continue;
+        }
+        const choiceInLower = choice.toLowerCase();
+        if (options.includes(choiceInLower)){
+            validatedInput= true;
+            return choiceInLower;
+        }
+    }
+}
 
+function game(){
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i<5; i++){
+        const playerSelection = getPlayerChoice();
+        const computerSelection = getComputerChoice();
+        console.log(gameRound(playerSelection, computerSelection));
+        if(checkWinner(playerSelection, computerSelection)== "Player"){
+            playerScore++;
+        } else if (checkWinner(playerSelection, computerSelection)== "Computer"){
+            computerScore++;
+        }
+    }
+    if (playerScore > computerScore){
+        console.log("Player 1 Wins!");
+    } else if (playerScore < computerScore){
+        console.log("Computer Wins!");
+    }
+}
+ game()
