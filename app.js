@@ -3,12 +3,13 @@ const options = ["rock", "paper", "scissors"];
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
-const reset = document.querySelector('#reset');
+const resetButton = document.querySelector('#reset');
 const playerDisplay = document.querySelector('#playerDisplay');
 const computerDisplay = document.querySelector('#computerDisplay');
 const tieDisplay = document.querySelector('#tieDisplay');
 const body = document.querySelector('body');
 const h1 = document.createElement('h1');
+const topScore = document.querySelector('#topScore')
 
 
 function getComputerChoice(){
@@ -106,3 +107,14 @@ scissors.addEventListener('click', function(){
     };
 });
 
+topScore.querySelector('change', functio)
+
+resetButton.addEventListener('click', function(){
+    let isGameOver = false;
+    let playerScore = 0;
+    let computerScore = 0;
+    let tieScore = 0;
+    playerDisplay.textContent = playerScore;
+    computerDisplay.textContent = computerScore;
+    tieDisplay.textContent = tieScore;
+})
