@@ -1,5 +1,23 @@
 const options = ["rock", "paper", "scissors"];
 
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const reset = document.querySelector('#reset');
+const playerDisplay = document.querySelector('#playerDisplay')
+const computerDisplay = document.querySelector('#computerDisplay')
+
+function getPlayerChoice(){
+    rock.addEventListener('click', function(){
+        return "rock";
+    })
+    paper.addEventListener('click', function(){
+        return "paper";
+    })
+    scissors.addEventListener('click', function(){
+        return "scissors";
+    })
+}
 
 function getComputerChoice(){
     const choice = options[Math.floor(Math.random() * options.length)];
@@ -30,39 +48,18 @@ function checkWinner(playerSelection, computerSelection){
     }
 }
 
-function getPlayerChoice(){
-    let validatedInput = false;
-    while (validatedInput==false){
-        const choice = prompt("Rock, Paper, Scissors");
-        if(choice == null){
-            continue;
-        }
-        const choiceInLower = choice.toLowerCase();
-        if (options.includes(choiceInLower)){
-            validatedInput= true;
-            return choiceInLower;
-        }
-    }
-}
 
-function game(){
-    let playerScore = 0;
-    let computerScore = 0;
+let playerScore = 0;
+let computerScore = 0;
 
-    for (let i = 0; i<5; i++){
-        const playerSelection = getPlayerChoice();
-        const computerSelection = getComputerChoice();
-        console.log(gameRound(playerSelection, computerSelection));
-        if(checkWinner(playerSelection, computerSelection)== "Player"){
-            playerScore++;
-        } else if (checkWinner(playerSelection, computerSelection)== "Computer"){
-            computerScore++;
-        }
+rock.addEventListener('click', function(){
+    if(getComputerChoice() == "paper"){
+        playerScore += 1;
+        playerDisplay.textContent = playerScore;
     }
-    if (playerScore > computerScore){
-        console.log("Player 1 Wins!");
-    } else if (playerScore < computerScore){
-        console.log("Computer Wins!");
-    }
-}
- game()
+})
+
+    
+
+        
+            
