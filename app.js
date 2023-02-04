@@ -51,11 +51,41 @@ function checkWinner(playerSelection, computerSelection){
 
 let playerScore = 0;
 let computerScore = 0;
+let winningScore = 5;
 
 rock.addEventListener('click', function(){
-    if(getComputerChoice() == "paper"){
-        playerScore += 1;
-        playerDisplay.textContent = playerScore;
+    if(playerScore !== winningScore || computerScore !== winningScore){
+        if(getComputerChoice() == "scissors"){
+            playerScore += 1;
+            playerDisplay.textContent = playerScore;
+        } else if(getComputerChoice() == "paper"){
+            computerScore += 1;
+            computerDisplay.textContent = computerScore;
+        }
+    }
+})
+
+paper.addEventListener('click', function(){
+    if(playerScore !== winningScore || computerScore !== winningScore){
+        if(getComputerChoice() == "rock"){
+            playerScore += 1;
+            playerDisplay.textContent = playerScore;
+        } else if(getComputerChoice() == "scissors"){
+            computerScore += 1;
+            computerDisplay.textContent = computerScore;
+        }
+    }   
+})
+
+scissors.addEventListener('click', function(){
+    if(playerScore !== winningScore || computerScore !== winningScore){
+        if(getComputerChoice() == "paper"){
+            playerScore += 1;
+            playerDisplay.textContent = playerScore;
+        } else if(getComputerChoice() == "rock"){
+            computerScore += 1;
+            computerDisplay.textContent = computerScore;
+        }
     }
 })
 
